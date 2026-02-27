@@ -2,7 +2,7 @@
 
 Binary Classification of Tamil YouTube Comments  (Abusive – அவதூறு vs Non-Abusive – சாதாரணம்)
 
-This task is done as part of the DravidianLangTech@ACL2026
+This work is done as part of the task **Abusive Tamil Text Targeting Women on Social Media - DravidianLangTech@ACL2026**
 
 ---
 
