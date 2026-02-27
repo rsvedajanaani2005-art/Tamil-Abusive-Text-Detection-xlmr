@@ -3,6 +3,8 @@
 Binary Classification of Tamil YouTube Comments
 (Abusive – அவதூறு vs Non-Abusive – சாதாரணம்) using XLM-RoBERTa
 
+This task is done as part of the DravidianLangTech@ACL2026
+
 # 1. Overview 
 
 This repository presents a transformer-based approach for detecting abusive Tamil YouTube comments targeting women. The task is formulated as a binary text classification problem and implemented using XLM-RoBERTa-base fine-tuning with the Hugging Face Transformers library and PyTorch backend.
