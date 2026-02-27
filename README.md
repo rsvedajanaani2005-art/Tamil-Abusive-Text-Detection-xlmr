@@ -1,69 +1,70 @@
-# Tamil-Abusive-Text-Detection-xlmr
+# Tamil Abusive Text Detection using XLM-RoBERTa
 
-Binary Classification of Tamil YouTube Comments
-(Abusive – அவதூறு vs Non-Abusive – சாதாரணம்) using XLM-RoBERTa
+Binary Classification of Tamil YouTube Comments  (Abusive – அவதூறு vs Non-Abusive – சாதாரணம்)
 
 This task is done as part of the DravidianLangTech@ACL2026
 
-# 1. Overview 
+---
 
-This repository presents a transformer-based approach for detecting abusive Tamil YouTube comments targeting women. The task is formulated as a binary text classification problem and implemented using XLM-RoBERTa-base fine-tuning with the Hugging Face Transformers library and PyTorch backend.
+## Overview
 
-The goal is to automatically classify Tamil comments into:
+This repository presents a transformer-based approach for detecting abusive Tamil YouTube comments targeting women. The task is formulated as a binary text classification problem and implemented using **XLM-RoBERTa-base** fine-tuning with the Hugging Face Transformers library and PyTorch.
 
-Abusive (அவதூறு)
+The system classifies Tamil comments into:
 
-Non-Abusive (சாதாரணம்)
+- **Abusive (அவதூறு)**
+- **Non-Abusive (சாதாரணம்)**
 
-The system is evaluated using macro-averaged precision, recall, and F1-score, following the official shared task evaluation protocol.
+---
 
-# 2. Task Description
+## Dataset
 
-Online platforms have increasingly become spaces where Tamil-speaking women face derogatory and abusive language. Automated detection of such harmful content is critical for building safer digital environments.
+The dataset contains annotated Tamil YouTube comments.
 
-This task focuses on binary classification of Tamil YouTube comments.
+| Split | Samples |
+|--------|---------|
+| Train | 3652 |
+| Test  | 913 |
+| Total | 4565 |
 
-Dataset Statistics
-Split	Samples
-Train	3652
-Test	913
-Total	4565
-Labels
+The training set is split into 90% training and 10% validation using stratified sampling.
 
-Abusive (அவதூறு) – Comments containing offensive, harmful, or insulting language
+### Columns
 
-Non-Abusive (சாதாரணம்) – Neutral or non-harmful comments
+- `Text` – Tamil comment  
+- `Class` – Label (0 = Non-Abusive, 1 = Abusive)
 
-Evaluation metrics:
+---
 
-Macro Precision
+## Model
 
-Macro Recall
+The model used is **xlm-roberta-base**, a multilingual transformer pretrained on large-scale multilingual corpora.
 
-Macro F1-score
+### Training Configuration
 
-Metrics are computed using Scikit-learn’s classification_report.
+- Max sequence length: 128  
+- Learning rate: 2e-5  
+- Batch size: 16  
+- Epochs: 3  
+- Weight decay: 0.01  
+- Optimizer: AdamW (via Hugging Face Trainer)  
+- Evaluation metric: Macro Precision, Macro Recall, Macro F1  
 
-# 3. Model Architecture
+---
 
-The system fine-tunes XLM-RoBERTa-base, a multilingual transformer model pretrained on large-scale multilingual corpora.
+## Notes
 
-Architecture components:
+- Dataset files are not included due to distribution restrictions.
+- GPU is recommended for faster training.
+- The best model checkpoint is automatically selected based on validation Macro-F1.
 
-- Pretrained XLM-RoBERTa encoder
+---
 
-- Classification head (linear layer)
+## Installation
 
-- Softmax output layer for binary prediction
+Clone the repository:
 
-- The model is fine-tuned end-to-end using cross-entropy loss.
+```bash
+git clone https://github.com/yourusername/Tamil-Abusive-Text-Detection-xlmr.git
+cd Tamil-Abusive-Text-Detection-xlmr
 
-Implementation stack:
-
-- PyTorch
-
-- Hugging Face Transformers
-
-- Hugging Face Datasets
-
-- Scikit-learn
